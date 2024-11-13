@@ -9,6 +9,7 @@ public class areatriangulo{
  		double altura= lector.nextDouble();
  		double total= base*altura/2;
  		 System.out.println("el resutaldo es" + total);
+		int opcion= lector.nextInt();
  		 
 	}
 }
