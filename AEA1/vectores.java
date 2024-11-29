@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class vectores {
 public static void main(String[] args) {
     String [] entrada = new String[6];
@@ -9,11 +10,12 @@ public static void main(String[] args) {
     for (int i= 0; i<entrada.length; i++){
         if (entrada[i].equals "a" || entrada[i]=="e" || entrada[i]=="i" || entrada[i]=="o" || entrada[i]=="u"){
             entrada[i]="$";
-        }
-        }
+        
+    }
         System.out.println("posicio"+i+"== "+entrada[i]);
 
 
 }
 
+}
 }

@@ -1,6 +1,8 @@
+import java.util.*;
 public class vector {
-    public static void main(String[] args) {
+  public static void main(String[] args) {
       int [] vector = {12,3,45,-3,65,-5,88,99,2,23,54,33,27,53,96,0};
+      Arrays.sort(vector);
       int Length = vector.length;
       int max = vector[0];
       int min = vector[0];
@@ -14,6 +16,6 @@ public class vector {
       }
       System.out.println("el numero mas alto es: " +max);
       System.out.println("el numero mas bajo es: " +min);
-
+      System.out.println( vector[Length - 1]);
     }
 }
