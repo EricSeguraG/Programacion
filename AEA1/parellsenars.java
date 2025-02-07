@@ -5,7 +5,6 @@ public class parellsenars {
     
             for(int i = 0; i < parellsenars.length; i++) {
                 for(int j = 0; j < parellsenars[i].length; j++) {
-                    if (i % 2 == 0 && j % 2 == 0)
                         parellsenars[i][j] = 1;
                     if (i % 2 ==0 && j % 2 !=0)
                         parellsenars[i][j] = 2;

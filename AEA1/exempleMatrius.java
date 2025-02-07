@@ -6,7 +6,7 @@ public class exempleMatrius {
         for(int i = 0; i < matriuParells.length; i++) {
             for(int j = 0; j < matriuParells[i].length; j++) {
                 if (i % 2 == 0)
-                    matriuParells[i][j] = 0;
+                    matriuParells[i][j] = i;
                 else
                     matriuParells[i][j] = i;
                 System.out.println("La posició " + i + " " + j + " de la matriu matriuParells val: " + matriuParells[i][j]);

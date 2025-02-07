@@ -8,7 +8,7 @@ public static void main(String[] args) {
         entrada[i]=sc.next();
     }
     for (int i= 0; i<entrada.length; i++){
-        if (entrada[i].equals "a" || entrada[i]=="e" || entrada[i]=="i" || entrada[i]=="o" || entrada[i]=="u"){
+        if (entrada[i]== "a" || entrada[i]=="e" || entrada[i]=="i" || entrada[i]=="o" || entrada[i]=="u"){
             entrada[i]="$";
         
     }
