@@ -6,7 +6,6 @@ public class lectordatosterminal {
   private Scanner lector = new Scanner(System.in);
   public double leerdouble(){
     Random aleatorio = new Random();
-        
     boolean noleido = true;
     String[] insultos = {"cerdo agridulce","basura humana","la recalcada concha puta de tu madre","subnormal","idiota","mongolico", "gilipollas", "retractil", "retrasado mental"};
     int numeroAleatorio = aleatorio.nextInt(insultos.length);
@@ -22,5 +21,34 @@ public class lectordatosterminal {
       }
     }
     return 0;
+
   }
-}    
+  public int leerInt(){
+    boolean nollegit = true;
+    while(nollegit){
+      if (lector.hasNextInt()){
+        nollegit = false;
+        return lector.nextInt();
+      }
+      else
+      System.out.println("Introduce un numero valido");
+      lector.next();
+    }
+    return 0;
+}   
+public char leerLetra(){
+  boolean Letranoleida = true;
+  while(Letranoleida){
+    //if (lector.next().charAt(0)){
+      Letranoleida = false;
+      return lector.next().charAt(0);
+    //}
+    //else {
+      //System.out.println("Introduce una letra:");
+      //lector.next();
+    //}
+
+  }
+  return 0;
+}
+}
