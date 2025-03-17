@@ -1,4 +1,4 @@
-package AEA3.UTILIDADES;
+package UTILIDADES;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -51,4 +51,22 @@ public char leerLetra(){
   }
   return 0;
 }
+  public String leerString() {
+    Scanner lector = new Scanner(System.in); // Crear el objeto Scanner
+    boolean StringNoLeido = true;
+    String StringLeido = "";
+
+    while (StringNoLeido) {
+        StringLeido = lector.nextLine(); // Leer la cadena completa
+
+        if (!StringLeido.isEmpty()) { // Verificar si la cadena no está vacía
+            StringNoLeido = false;
+        } else {
+            System.out.println("Error: la cadena está vacía, por favor intenta de nuevo.");
+        }
+    }
+
+    return StringLeido; // Retornar la cadena leída
+}
+  
 }

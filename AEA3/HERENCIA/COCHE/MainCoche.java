@@ -3,7 +3,7 @@ package HERENCIA.COCHE;
 public class MainCoche {
     public static void main(String[] args) {
         Coche c = new Coche();
-        c.setTipovehiculo("Coche");
+        c.setTipovehiculo("Suv");
         c.setId(1);
         System.out.println(c.getId());
         System.out.println(c.getTipovehiculo());
