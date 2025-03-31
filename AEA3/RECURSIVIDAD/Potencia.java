@@ -7,13 +7,13 @@ public class Potencia {
         System.out.println("La potencia de " +base+" elevado a "+exponente+" es: "+potencia(base, exponente));
     
     }
-        public static int potencia (int base, int exponente) {
-    
-            if (exponente == 0) {
-                return 1;
-            }
-            return base * potencia(base, exponente - 1);
+    public static int potencia (int base, int exponente) {
+
+        if (exponente == 0) {
+            return 1;
         }
+        return base * potencia(base, exponente - 1);
+    }
 }
 
 
