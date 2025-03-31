@@ -1,16 +1,16 @@
 package JUEGOMASTER;
-import java.util.Scanner;
+import UTILIDADES.lectordatosterminal;
 
 public class HumanPlayer extends Player {
     private final int LONG_SECRET = 3;
 
     @Override
     public String makeGuess() {
-        Scanner scanner = new Scanner(System.in);
+        lectordatosterminal scanner = new lectordatosterminal();
         String guess;
         do {
             System.out.print("Escriu " + LONG_SECRET + " lletres minúscules: ");
-            guess = scanner.nextLine();
+            guess = scanner.leerString();
         } while (!isValidGuess(guess));
         return guess;
     }

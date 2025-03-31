@@ -1,17 +1,15 @@
 package JUEGOMASTER;
 
 public class Mastermind {
-    private CodeGenerator codeGenerator;
-    private Player player;
-    private Feedback feedback;
+    private static CodeGenerator codeGenerator;
+    private static Player player;
+    private static Feedback feedback;
 
-    public Mastermind() {
-        this.codeGenerator = new CodeGenerator();
-        this.player = new HumanPlayer();
-        this.feedback = new Feedback();
-    }
-
-    public void startGame() {
+    public static void main(String[] args) {
+        
+        codeGenerator = new CodeGenerator();
+        player = new HumanPlayer();
+        feedback = new Feedback();
         String secretCode = codeGenerator.generateCode();
         boolean isCorrect = false;
 
@@ -30,3 +28,5 @@ public class Mastermind {
         }
     }
 }
+
+
