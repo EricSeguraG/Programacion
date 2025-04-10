@@ -1,32 +1,91 @@
 package JUEGOMASTER;
 
+import UTILIDADES.lectordatosterminal;
+
 public class Mastermind {
-    private static CodeGenerator codeGenerator;
-    private static Player player;
-    private static Feedback feedback;
+    public static final String ENCERTAT_4 = "0000";
+    public static final String ENCERTAT_6 = "000000";
 
-    public static void main(String[] args) {
-        
+    private CodeGenerator codeGenerator;
+    private Player player;
+    private RobotPlayer robot;
+    private Feedback feedback;
+    private String secretCode;
+    private boolean isRobotTurn;
+
+    public Mastermind(Player player, RobotPlayer robot) {
         codeGenerator = new CodeGenerator();
-        player = new HumanPlayer();
+        this.player = player;
+        this.robot = robot;
         feedback = new Feedback();
-        String secretCode = codeGenerator.generateCode();
-        boolean isCorrect = false;
+        secretCode = codeGenerator.generateCode(player.getCodeLength());
+        isRobotTurn = false;
+    }
 
-        while (!isCorrect) {
-            String guess = player.makeGuess();
-            String result = feedback.getFeedback(secretCode, guess);
+    public void start() {
+        boolean guanyat = false;
 
-            System.out.println("La resposta és: [" + result + "]");
+        while (!guanyat) {
+            if (!isRobotTurn) {
+                String guess;
 
-            if (guess.equals(secretCode)) {
-                System.out.println("Has encertat el codi secret!");
-                isCorrect = true;
+                // 🔁 Bucle de validación del intento del jugador
+                while (true) {
+                    guess = player.makeGuess();
+
+                    if (guess.length() != player.getCodeLength()) {
+                        System.out.println("❌ Error: El código debe tener " + player.getCodeLength() + " letras.");
+                    } else {
+                        break;
+                    }
+                }
+
+                String response = feedback.getFeedback(secretCode, guess);
+                System.out.println("Jugador: " + response);
+
+                if (guess.equals(secretCode)) {
+                    System.out.println("🎉 ¡Has ganado!");
+                    guanyat = true;
+                } else {
+                    System.out.println("Turno del Robot...");
+                    isRobotTurn = true;
+                }
+
             } else {
-                System.out.println("Continua intentant-ho!");
+                String robotGuess = robot.makeGuess();
+                String robotFeedback = feedback.getFeedback(secretCode, robotGuess);
+
+                System.out.println("Robot: " + robotGuess);
+                System.out.println("Respuesta del Robot: " + robotFeedback);
+
+                if (robotGuess.equals(secretCode)) {
+                    System.out.println("🤖 ¡El Robot ha ganado!");
+                    guanyat = true;
+                } else {
+                    robot.updateGuess(robotFeedback);
+                    isRobotTurn = false;
+                }
             }
         }
     }
+
+    public static void main(String[] args) {
+        lectordatosterminal scanner = new lectordatosterminal();
+
+        System.out.print("Introduce el tipo de dificultad (1: Adult, 2: Child): ");
+        int choice = scanner.leerInt();
+
+        Player player;
+        RobotPlayer robot;
+        if (choice == 1) {
+            player = new AdultPlayer();
+            robot = new RobotPlayer(6);
+        } else {
+            player = new ChildPlayer();
+            robot = new RobotPlayer(4);
+        }
+
+        Mastermind game = new Mastermind(player, robot);
+        game.start();
+    }
 }
-
-

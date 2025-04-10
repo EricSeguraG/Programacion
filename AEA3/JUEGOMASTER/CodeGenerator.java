@@ -1,17 +1,24 @@
 package JUEGOMASTER;
+
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class CodeGenerator {
-    private final String abc = "abcdefghijklmnopqrstuvwxyz";
-    private final int LONG_SECRET = 3;
+    private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    private Random random = new Random();
 
-    public String generateCode() {
-        Random random = new Random();
-        StringBuilder secretCode = new StringBuilder();
-        for (int i = 0; i < LONG_SECRET; i++) {
-            int index = random.nextInt(abc.length());
-            secretCode.append(abc.charAt(index));
+    public String generateCode(int length) {
+        ArrayList<Character> availableLetters = new ArrayList<>();
+        for (char c : ALPHABET.toCharArray()) {
+            availableLetters.add(c);
         }
-        return secretCode.toString();
+        Collections.shuffle(availableLetters, random);  
+
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            code.append(availableLetters.get(i));  
+        }
+        return code.toString();
     }
 }

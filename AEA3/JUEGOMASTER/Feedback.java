@@ -1,19 +1,24 @@
 package JUEGOMASTER;
-public class Feedback {
-    private final char TOT_CORRECTE = '0';
-    private final char MALA_POSICIO = 'X';
-    private final char INCORRECTE = '-';
 
-    public String getFeedback(String secret, String guess) {
+public class Feedback {
+    public static final char TOT_CORRECTE = '0';
+    public static final char MALA_POSICIO = 'X';
+    public static final char INCORRECTE = '-';
+
+    public String getFeedback(String secret, String guess) {       
         StringBuilder feedback = new StringBuilder();
+
         for (int i = 0; i < secret.length(); i++) {
-            char charSecret = secret.charAt(i);
-            char charGuess = guess.charAt(i);
-            if (charSecret == charGuess) {
+            char secretChar = secret.charAt(i);
+            char guessChar = guess.charAt(i);
+
+            if (guessChar == secretChar) {      
                 feedback.append(TOT_CORRECTE);
-            } else if (secret.indexOf(charGuess) != -1) {
+            }
+            else if (secret.indexOf(guessChar) != -1) {     
                 feedback.append(MALA_POSICIO);
-            } else {
+            }
+            else {     
                 feedback.append(INCORRECTE);
             }
         }
